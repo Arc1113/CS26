@@ -1,7 +1,9 @@
-package com.example.cs262;
+package com.example.cs262.gui;
 
 
-import javafx.event.ActionEvent;
+import com.example.cs262.model.Admin;
+import com.example.cs262.model.DatabaseConnection;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -126,5 +128,10 @@ public class BLoginPageController {
     }
 
 
+    @FXML
+    private void closeApplication() {
+        Platform.exit();
+        System.exit(0);
+    }
 
 }

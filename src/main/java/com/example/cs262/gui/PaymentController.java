@@ -1,5 +1,9 @@
-package com.example.cs262;
+package com.example.cs262.gui;
 
+import com.example.cs262.model.Admin;
+import com.example.cs262.model.CartItems;
+import com.example.cs262.model.Controller;
+import com.example.cs262.model.DatabaseConnection;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -15,6 +19,9 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.LinkedList;
 
 public class PaymentController {
@@ -127,8 +134,8 @@ public class PaymentController {
             alert.setContentText("You must agree to the terms and conditions before placing the order.");
             alert.showAndWait();
         }
-    }
 
+    }
 
     @FXML
     private Label totalCost;

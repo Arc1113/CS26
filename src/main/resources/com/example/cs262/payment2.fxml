@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="299.0" style="-fx-background-color: White;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs262.Payment2Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="299.0" style="-fx-background-color: White;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs262.gui.Payment2Controller">
    <children>
       <Button fx:id="ConfirmOrderBTN" layoutX="26.0" layoutY="502.0" mnemonicParsing="false" onAction="#handleConfirmOrderbutton" prefHeight="49.0" prefWidth="248.0" style="-fx-background-color: GREEN; -fx-text-fill: WHITE;" styleClass="rectangular-button3" stylesheets="@application.css" text="Confirm Order">
          <font>

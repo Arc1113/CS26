@@ -9,4 +9,10 @@ module com.example.cs {
 
     opens com.example.cs262 to javafx.fxml;
     exports com.example.cs262;
+    exports com.example.cs262.products;
+    opens com.example.cs262.products to javafx.fxml;
+    exports com.example.cs262.gui;
+    opens com.example.cs262.gui to javafx.fxml;
+    exports com.example.cs262.model;
+    opens com.example.cs262.model to javafx.fxml;
 }

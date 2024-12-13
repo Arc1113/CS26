@@ -1,4 +1,4 @@
-package com.example.cs262;
+package com.example.cs262.model;
 
 /**
  * Abstract base class representing a user with encapsulated details.

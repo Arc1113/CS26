@@ -1,4 +1,6 @@
-package com.example.cs262;
+package com.example.cs262.products;
+
+import com.example.cs262.model.Product;
 
 public class MilkAndEggs extends Product {
 
@@ -27,8 +29,8 @@ public class MilkAndEggs extends Product {
 
     // Override setData to include expiration date (Polymorphism)
     @Override
-    public void setData(String name, double price, String rating, String imageURL) {
-        super.setData(name, price, rating, imageURL); // Update common fields
+    public void setData(String name, double price, String rating, String imageURL, int stock) {
+        super.setData(name, price, rating, imageURL, stock); // Update common fields
         // Expiration date can be set separately if needed
     }
 

@@ -1,4 +1,4 @@
-package com.example.cs262;
+package com.example.cs262.gui;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

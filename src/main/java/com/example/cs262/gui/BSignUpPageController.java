@@ -1,5 +1,6 @@
-package com.example.cs262;
+package com.example.cs262.gui;
 
+import com.example.cs262.model.Customer;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -68,7 +69,7 @@ public class BSignUpPageController {
     }
 
     @FXML
-    void goToLoginPage(){
+    public void goToLoginPage(){
 
         Stage cartStage = (Stage) loginBTN.getScene().getWindow();
         cartStage.close();

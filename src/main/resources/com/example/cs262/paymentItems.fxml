@@ -8,7 +8,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.cs262.Payment2Controller"
+            fx:controller="com.example.cs262.gui.Payment2Controller"
             prefHeight="400.0" prefWidth="600.0">
 
 </AnchorPane>

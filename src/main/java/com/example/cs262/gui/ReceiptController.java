@@ -1,5 +1,6 @@
-package com.example.cs262;
+package com.example.cs262.gui;
 
+import com.example.cs262.model.CartItems;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

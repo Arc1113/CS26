@@ -1,4 +1,6 @@
-package com.example.cs262;
+package com.example.cs262.products;
+
+import com.example.cs262.model.Product;
 
 public class Beverages extends Product {
 
@@ -28,8 +30,8 @@ public class Beverages extends Product {
 
     // Override setData to include size details (Polymorphism)
     @Override
-    public void setData(String name, double price, String rating, String imageURL) {
-        super.setData(name, price, rating, imageURL); // Call the parent class method to set product data
+    public void setData(String name, double price, String rating, String imageURL, int stock) {
+        super.setData(name, price, rating, imageURL, stock); // Call the parent class method to set product data
         // The size field can be updated separately through the setSize() method
     }
 

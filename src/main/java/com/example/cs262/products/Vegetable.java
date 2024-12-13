@@ -1,4 +1,6 @@
-package com.example.cs262;
+package com.example.cs262.products;
+
+import com.example.cs262.model.Product;
 
 public class Vegetable extends Product {
 
@@ -27,8 +29,8 @@ public class Vegetable extends Product {
 
     // Override setData method to include organic details (Polymorphism)
     @Override
-    public void setData(String name, double price, String rating, String imageURL) {
-        super.setData(name, price, rating, imageURL); // Update common product fields
+    public void setData(String name, double price, String rating, String imageURL, int stock) {
+        super.setData(name, price, rating, imageURL, stock); // Update common product fields
         // Organic status can be updated separately if needed
     }
 
