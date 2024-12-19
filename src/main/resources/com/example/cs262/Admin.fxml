@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -15,8 +15,6 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.shape.Rectangle?>
-<?import java.lang.String?>
 <BorderPane fx:id="LoaderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="299.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs262.model.Admin">
    <top>
       <AnchorPane prefHeight="65.0" prefWidth="299.0" style="-fx-background-color: WHite; -fx-opacity: 80%;" BorderPane.alignment="CENTER">
@@ -45,37 +43,6 @@
                </color>
             </DropShadow>
          </effect>
-         <children>
-            <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="52.0" style="-fx-background-color: White;">
-               <graphic>
-                  <ImageView fitHeight="43.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../../Downloads/groceries.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="Inventory" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleInventory" prefHeight="51.0" prefWidth="52.0" style="-fx-background-color: White;">
-               <graphic>
-                  <FontAwesomeIcon glyphName="HEART" size="2em" />
-               </graphic>
-            </Button>
-            <Button layoutX="62.0" layoutY="10.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="52.0" style="-fx-background-color: White;">
-               <graphic>
-                  <FontAwesomeIcon />
-               </graphic>
-            </Button>
-            <Button layoutX="114.0" layoutY="10.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="52.0" style="-fx-background-color: White;">
-               <graphic>
-                  <FontAwesomeIcon />
-               </graphic>
-            </Button>
-            <Button layoutX="166.0" layoutY="10.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="52.0" style="-fx-background-color: White;">
-               <graphic>
-                  <FontAwesomeIcon />
-               </graphic>
-            </Button>
-         </children>
          <padding>
             <Insets left="10.0" right="10.0" />
          </padding>

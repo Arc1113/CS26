@@ -12,10 +12,11 @@ public class Laundry extends Product {
     }
 
     // Constructor: Initialize fields for Laundry products
-    public Laundry(String name, double price, String rating, String imageURL, String brand) {
-        super(name, price, rating, imageURL); // Initialize fields from the parent class
+    public Laundry(String name, double price, String rating, String imageURL, String brand,int stock) {
+        super(name, price, rating, imageURL,stock); // Initialize fields from the parent class
         this.brand = brand; // Set the brand specific to Laundry products
     }
+
 
     // Getter for brand (Encapsulation)
     public String getBrand() {

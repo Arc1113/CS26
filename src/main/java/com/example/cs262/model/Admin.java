@@ -44,11 +44,11 @@ public class Admin extends User {
     }
 
     // Method to add a product to the database
-    public static void addProduct(String category, String name, double price, String rating, String imageURL, String extraField) {
+    public static void addProduct(String category, String name, double price, String rating, String imageURL, String stocks,String extraField) {
         try {
             // Check if the product already exists in the database
             if (!isProductInDatabase(category, name, price, rating, imageURL, extraField)) {
-                insertProductIntoDatabase(category, name, price, rating, imageURL, extraField);
+                insertProductIntoDatabase(category, name, price, rating, imageURL,stocks, extraField);
             } else {
                 System.out.println("Product already exists in the database. Skipping addition.");
             }
@@ -79,8 +79,8 @@ public class Admin extends User {
     }
 
     // Helper method to insert a product into the database
-    private static void insertProductIntoDatabase(String category, String name, double price, String rating, String imageURL, String extraField) throws SQLException {
-        String sql = "INSERT INTO products (category, name, price, rating, imageURL, extraField) VALUES (?, ?, ?, ?, ?, ?)";
+    private static void insertProductIntoDatabase(String category, String name, double price, String rating, String imageURL,String stocks, String extraField) throws SQLException {
+        String sql = "INSERT INTO products (category, name, price, rating, imageURL,stock, extraField) VALUES (?, ?, ?, ?, ?, ?,?)";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, category);
@@ -88,7 +88,8 @@ public class Admin extends User {
             stmt.setDouble(3, price);
             stmt.setString(4, rating);
             stmt.setString(5, imageURL);
-            stmt.setString(6, extraField);
+            stmt.setString(6, stocks);
+            stmt.setString(7, extraField);
 
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {
@@ -300,26 +301,26 @@ public class Admin extends User {
 
 
     // Helper method to create a product object based on category
-    private static Product createProduct(String category, String name, double price, String rating, String imageURL, String extraField) {
+    private static Product createProduct(String category, String name, double price, String rating, String imageURL, String extraField, int stock) {
         switch (category) {
             case "Fruit":
-                Fruit fruit = new Fruit(name, price, rating, imageURL, extraField);
+                Fruit fruit = new Fruit(name, price, rating, imageURL, extraField,stock);
                 fruit.setSeason(extraField);
                 return fruit;
             case "Vegetable":
-                Vegetable vegetable = new Vegetable(name, price, rating, imageURL, extraField);
+                Vegetable vegetable = new Vegetable(name, price, rating, imageURL, extraField,stock);
                 vegetable.setIsOrganic(extraField);
                 return vegetable;
             case "Beverages":
-                Beverages beverages = new Beverages(name, price, rating, imageURL, extraField);
+                Beverages beverages = new Beverages(name, price, rating, imageURL, extraField,stock);
                 beverages.setSize(extraField);
                 return beverages;
             case "MilkAndEggs":
-                MilkAndEggs milkAndEggs = new MilkAndEggs(name, price, rating, imageURL, extraField);
+                MilkAndEggs milkAndEggs = new MilkAndEggs(name, price, rating, imageURL, extraField,stock);
                 milkAndEggs.setExpirationDate(extraField);
                 return milkAndEggs;
             case "Laundry":
-                Laundry laundry = new Laundry(name, price, rating, imageURL, extraField);
+                Laundry laundry = new Laundry(name, price, rating, imageURL, extraField,stock);
                 laundry.setBrand(extraField);
                 return laundry;
             default:
@@ -353,6 +354,9 @@ public class Admin extends User {
     }
 
     @FXML
+    private TextField ProductStocksField;
+
+    @FXML
     private TextField ProductNameExtraField;
 
     @FXML
@@ -376,8 +380,9 @@ public class Admin extends User {
         String Rating = ProductNameRating.getText();
         String ImageURL = imageTextField.getText();
         String ExtraField = ProductNameExtraField.getText();
+        String Stocks= ProductStocksField.getText();
 
-        addProduct(Category, Name, Price, Rating, ImageURL, ExtraField);
+        addProduct(Category, Name, Price, Rating, ImageURL, Stocks,ExtraField);
 
     }
 
@@ -397,9 +402,10 @@ public class Admin extends User {
                     String rating = rs.getString("rating");
                     String imageURL = rs.getString("imageURL");
                     String extraField = rs.getString("extraField");
+                    int stock = rs.getInt("stock");
 
                     // Create a Product object and add it to the list
-                    Product product = new Product(name, price, rating, imageURL);
+                    Product product = new Product(name, price, rating, imageURL,stock);
                     product.setCategory(category);
                     product.setExtraField(extraField);
                     products.add(product);

@@ -145,27 +145,34 @@ public class Product {
     @FXML
     public Label stock;
 
+
+
     // Product attributes
     private double price;
     private String rating;
     private String name;
 
     private String Category;
+    private  int Stock2;
 
     /**
      * Constructor for Product. Initializes product attributes.
      */
-    public Product( String name, double price, String rating, String imageURL) {
+    public Product( String name, double price, String rating, String imageURL,int stock) {
         this.name = name;
         this.price = price;
         this.rating = rating;
         this.imageURL = imageURL;
+        this.Stock2 = stock;
     }
 
     @FXML
     public void initialize() {
         // Initialization logic if necessary
     }
+
+
+
 
     /**
      * Handle clicking on the product container to open the product page.
@@ -208,14 +215,21 @@ public class Product {
             productRating.setText(rating);
         }
         if (this.stock != null) {
-            this.stock.setText("In Stock: "+ Integer.toString(stock));
+            this.stock.setText("Stock: "+ stock);
+            Stock2=stock;
         }
     }
 
+
+
+
+    public int getStock(){
+        return Stock2;
+    }
     /**
      * Set product data for a cart item.
      */
-    public void setDataofCartItem(String name, double price, String rating, String imageURL, int stock) {
+    public void setDataofCartItem(String name, double price, String rating, String imageURL) {
         this.imageURL = imageURL;
 
         Image image = new Image(getClass().getResourceAsStream(imageURL));
@@ -232,15 +246,12 @@ public class Product {
             productRating1.setText(rating);
         }
 
-        if (this.stock != null) {
-            this.stock.setText("In Stock: " + Integer.toString(stock));
-        }
-
         if (quantityField != null) {
             CartItems item = Customer.findCartItemByName(name); // Fetch the specific cart item
             if (item != null) {
                 quantityField.setText(String.valueOf(item.getQuantity()));
                 System.out.println("Quantity: " + item.getQuantity());
+                System.out.println("Stock: " + this.getStock());
             }
         }
         this.name = name;

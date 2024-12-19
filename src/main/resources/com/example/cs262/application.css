@@ -77,3 +77,8 @@
     -fx-border-radius: 50%; /* Border radius to match circle */
     -fx-border-width: 2px; /* Border width */
 }
+
+.button:pressed {
+    -fx-background-color: #004085; /* Color when pressed */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 5, 0, 0, 1); /* Shadow effect */
+}

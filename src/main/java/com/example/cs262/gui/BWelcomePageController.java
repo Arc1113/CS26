@@ -1,12 +1,13 @@
 package com.example.cs262.gui;
 
+import com.example.cs262.model.Customer;
+import com.example.cs262.model.UserSession;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -49,16 +50,19 @@ public class BWelcomePageController {
 
     @FXML
     public void initialize() {
-     //   Image background = new Image(getClass().getResourceAsStream("/com/example/aniika/picture/high-angle-customer-paying-with-.jpg"));
-     //   ImageBackground.setImage(background);
+        // Retrieve the current customer from the session
+        Customer currentCustomer = UserSession.getCurrentCustomer();
+
+        // Display the customer's information
+        if (currentCustomer != null) {
+            labelNameS.setText(currentCustomer.getUserName());
+
+        }
     }
+
     @FXML
     public void setUsername(String username) {
-        labelName.setText("Welcome, " + username + "!");
-    }
-    @FXML
-    public void setUsernameS(String usernameS) {
-        labelNameS.setText("Welcome, " + usernameS + "!");
+        labelNameS.setText("Welcome, " + username + "!");
     }
 
 

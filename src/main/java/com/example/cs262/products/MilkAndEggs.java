@@ -12,8 +12,8 @@ public class MilkAndEggs extends Product {
     }
 
     // Constructor: Initializes fields for Milk and Eggs category
-    public MilkAndEggs(String name, double price, String rating, String imageURL, String expirationDate) {
-        super(name, price, rating, imageURL); // Initialize parent class fields
+    public MilkAndEggs(String name, double price, String rating, String imageURL, String expirationDate, int stock) {
+        super(name, price, rating, imageURL,stock); // Initialize parent class fields
         this.expirationDate = expirationDate; // Set expiration date
     }
 

@@ -12,8 +12,8 @@ public class Fruit extends Product {
     }
 
     // Constructor: Initialize fields for the Fruit category
-    public Fruit(String name, double price, String rating, String imageURL, String season) {
-        super(name, price, rating, imageURL); // Initialize fields from the parent class
+    public Fruit(String name, double price, String rating, String imageURL, String season, int stock) {
+        super(name, price, rating, imageURL,stock); // Initialize fields from the parent class
         this.season = season;
     }
 

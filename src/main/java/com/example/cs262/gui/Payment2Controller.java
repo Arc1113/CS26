@@ -51,7 +51,7 @@ public class Payment2Controller {
     @FXML
     private ImageView productImage1;
 
-    private LinkedList<CartItems> cartItems = new LinkedList<>();
+    private static LinkedList<CartItems> cartItems = new LinkedList<>();
 
     // Initialize method called after FXML is loaded
     public void initialize() {
@@ -184,7 +184,6 @@ public class Payment2Controller {
                 decrementStockByName(item.getName(), item.getQuantity());
             }
 
-            refreshProductList();
 
 
         } catch (IOException e) {
@@ -192,7 +191,7 @@ public class Payment2Controller {
         }
     }
 
-    public void refreshProductList() {
+    public static void refreshProductList() {
         // Clear existing UI components
         Controller.getInstance().getHFruits().getChildren().clear();
         Controller.getInstance().getVegeBox().getChildren().clear();
@@ -200,6 +199,7 @@ public class Payment2Controller {
         Controller.getInstance().getDairyBox().getChildren().clear();
         Controller.getInstance().getLaundryBox().getChildren().clear();
 
+        cartItems.clear();
         // Reload products from the database
         Controller.displayAllProducts();
     }

@@ -13,12 +13,13 @@ public class CartItems {
 
 
     // Constructor
-    public CartItems( String name, double price, String rating, String image) {
+    public CartItems( String name, double price, String rating, String image,int Stock) {
         this.name = name;
         this.price = price;
         this.rating = rating;
         this.image = image;
         this.quantity = 1; // Default quantity
+        this.stock=Stock;
     }
 
 

@@ -5,6 +5,7 @@ import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.WritableImage;
@@ -22,6 +23,8 @@ import java.util.LinkedList;
 
 public class ReceiptController {
 
+    @FXML
+    private Button BacktoHomePageBtn;
 
     @FXML
     private Button DownloadBtn;
@@ -82,8 +85,30 @@ public class ReceiptController {
                 e.printStackTrace();
             }
         }
+
+        Payment2Controller.refreshProductList();
     }
 
+    @FXML
+    private void gotohomepage(){
+
+        try {
+            Payment2Controller.refreshProductList();
+            Stage cartStage = (Stage) BacktoHomePageBtn.getScene().getWindow();
+            cartStage.close();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/cs262/FXML.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
     // Method to convert WritableImage to BufferedImage
     private BufferedImage convertToBufferedImage(WritableImage image) {
         int width = (int) image.getWidth();

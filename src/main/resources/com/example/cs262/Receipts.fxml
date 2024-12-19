@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="299.0" style="-fx-background-color: #1c9424;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs262.gui.ReceiptController">
    <center>
       <AnchorPane prefHeight="550.0" prefWidth="299.0" BorderPane.alignment="CENTER">
@@ -110,12 +109,13 @@
                   </AnchorPane>
                </children>
             </VBox>
-            <Button fx:id="DownloadBtn" layoutX="41.0" layoutY="528.0" mnemonicParsing="false" onAction="#downloadReceipt" prefHeight="34.0" prefWidth="220.0" style="-fx-background-color: White;" styleClass="rectangular-button3" stylesheets="@application.css" text="Download Receipt" textFill="#01990b" />
+            <Button fx:id="DownloadBtn" layoutX="40.0" layoutY="516.0" mnemonicParsing="false" onAction="#downloadReceipt" prefHeight="34.0" prefWidth="220.0" style="-fx-background-color: White;" styleClass="rectangular-button3" stylesheets="@application.css" text="Download Receipt" textFill="#01990b" />
             <Button fx:id="BackButton" layoutX="17.0" layoutY="26.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="35.0" prefWidth="39.0" style="-fx-background-color: Transparent;">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="ARROW_LEFT" size="2em" stroke="#00990a" strokeWidth="2.0" />
                </graphic>
             </Button>
+            <Button fx:id="BacktoHomePageBtn" layoutX="40.0" layoutY="550.0" mnemonicParsing="false" onAction="#gotohomepage" prefHeight="31.0" prefWidth="220.0" style="-fx-background-color: Transparent;" styleClass="rectangular-button3" stylesheets="@application.css" text="Go Back to Home Page" textFill="WHITE" />
          </children>
       </AnchorPane>
    </center>

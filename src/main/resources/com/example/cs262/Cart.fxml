@@ -15,22 +15,22 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="productRating" layoutX="18.0" layoutY="115.0" text="4.8 (2000)">
+      <Label fx:id="productRating" layoutX="10.0" layoutY="114.0" text="4.8 (2000)">
          <font>
             <Font size="10.0" />
          </font>
       </Label>
-      <Label fx:id="stock" layoutX="18.0" layoutY="125.0" text="4.8 (2000)">
+      <Label fx:id="stock" layoutX="12.0" layoutY="148.0" text="4.8 (2000)">
          <font>
-            <Font size="10.0" />
+            <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="productPrice" layoutX="9.0" layoutY="133.0" text="\$5.00">
+      <Label fx:id="productPrice" layoutX="10.0" layoutY="125.0" text="\$5.00">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="90.0" layoutX="5.0" layoutY="3.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: LightGray; -fx-stroke-width: 0; -fx-arc-width: 20; -fx-arc-height: 30;" width="104.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="90.0" layoutX="5.0" layoutY="3.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #e4e6e3; -fx-stroke-width: 0; -fx-arc-width: 20; -fx-arc-height: 30;" width="104.0" />
       <ImageView fx:id="productImage" fitHeight="84.0" fitWidth="110.0" layoutX="8.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="addButton" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="82.0" layoutY="64.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-color: white;" styleClass="circular-button3" stylesheets="@application.css">
          <graphic>

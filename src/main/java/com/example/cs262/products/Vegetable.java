@@ -12,8 +12,8 @@ public class Vegetable extends Product {
     }
 
     // Constructor to initialize both Product fields and Vegetable-specific fields
-    public Vegetable(String name, double price, String rating, String imageURL, String isOrganic) {
-        super(name, price, rating, imageURL); // Initialize parent class fields
+    public Vegetable(String name, double price, String rating, String imageURL, String isOrganic, int stock) {
+        super(name, price, rating, imageURL, stock); // Initialize parent class fields
         this.isOrganic = isOrganic; // Set organic status
     }
 

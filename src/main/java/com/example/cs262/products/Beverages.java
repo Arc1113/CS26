@@ -7,8 +7,8 @@ public class Beverages extends Product {
     private String size; // Field specific to the Beverages category (e.g., "Small", "Medium", "Large")
 
     // Constructor: Initialize fields for Beverages
-    public Beverages(String name, double price, String rating, String imageURL, String size) {
-        super(name, price, rating, imageURL); // Call the parent constructor to initialize product fields
+    public Beverages(String name, double price, String rating, String imageURL, String size,int stock) {
+        super(name, price, rating, imageURL,stock); // Call the parent constructor to initialize product fields
         this.size = (size != null && !size.isEmpty()) ? size : "Unknown"; // Set size, default to "Unknown" if null or empty
     }
 

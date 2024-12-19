@@ -2,7 +2,6 @@ package com.example.cs262.model;
 
 import com.example.cs262.gui.BSignUpPageController;
 import com.example.cs262.gui.PaymentController;
-import com.example.cs262.products.*;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -11,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -142,7 +142,7 @@ Customer extends User {
             existingItem.setQuantity(existingItem.getQuantity() + 1);
             updateProductQuantityInCart(existingItem);
         } else {
-            CartItems newItem = new CartItems(product.getName(), product.getPrice(), product.getRating(), product.getImageURL());
+            CartItems newItem = new CartItems(product.getName(), product.getPrice(), product.getRating(), product.getImageURL(), product.getStock());
             newItem.setQuantity(1);
             cartItems.add(newItem);
             addCartItemToUI(newItem);
@@ -165,7 +165,7 @@ Customer extends User {
             AnchorPane bar = loader.load();
 
             Product cartProductController = loader.getController();
-            cartProductController.setDataofCartItem(item.getName(), item.getPrice(), item.getRating(), item.getImage(), item.getStock());
+            cartProductController.setDataofCartItem(item.getName(), item.getPrice(), item.getRating(), item.getImage());
 
             TextField quantityField = (TextField) bar.lookup("#quantityField");
             Label priceLabel = (Label) bar.lookup("#productPrice1");
@@ -214,7 +214,6 @@ Customer extends User {
             cartStage.initStyle(StageStyle.UNDECORATED);
             cartStage.setOnCloseRequest(event -> cartStage = null);
 
-
             Customer cartController = loader.getController();
             VBox cartVBox = cartController.getCartBox();
             if (cartVBox != null) {
@@ -228,8 +227,7 @@ Customer extends User {
                             product.getName(),
                             product.getPrice(),
                             product.getRating(),
-                            product.getImage(),
-                            product.getStock()
+                            product.getImage()
                     );
 
                     TextField quantityField = (TextField) itemRoot.lookup("#quantityField");
@@ -267,13 +265,22 @@ Customer extends User {
                     Button increaseButton = (Button) itemRoot.lookup("#increaseQuantity");
                     if (increaseButton != null) {
                         increaseButton.setOnAction(event -> {
-                            product.setQuantity(product.getQuantity() + 1);
-                            quantityField.setText(String.valueOf(product.getQuantity()));
-                            priceLabel.setText(String.format("₱%.2f", product.getQuantity() * product.getPrice()));
-                            Customer.getInstance().setTotalPrice("10000");
-                            System.out.println("Gana:" + Customer.getInstance().getTotalPrice());
-                            updateProductQuantityInCart(product);
-                            Customer.getInstance().updateTotalPrice();
+                            int currentQuantity = product.getQuantity();
+                            int maxStock = product.getStock();  // Get the stock available for this product
+
+                            System.out.println(product.getStock());
+                            System.out.println(product.getQuantity());
+                            if (currentQuantity < maxStock) {
+                                product.setQuantity(currentQuantity + 1);
+                                quantityField.setText(String.valueOf(product.getQuantity()));
+                                priceLabel.setText(String.format("₱%.2f", product.getQuantity() * product.getPrice()));
+                                Customer.getInstance().setTotalPrice("10000");
+                                updateProductQuantityInCart(product);
+                                Customer.getInstance().updateTotalPrice();
+                            } else {
+                                // Show a notification that stock is limited
+                                showStockLimitNotification(maxStock);
+                            }
                         });
                     }
 
@@ -295,13 +302,21 @@ Customer extends User {
             }
 
             cartStage.show();
-
-
             Platform.runLater(() -> instance.updateTotalPrice());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    // Helper method to show a notification when the stock limit is reached
+    private static void showStockLimitNotification(int maxStock) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Stock Limit Reached");
+        alert.setHeaderText("You cannot add more of this product.");
+        alert.setContentText("The maximum available stock is " + maxStock + ".");
+        alert.showAndWait();
+    }
+
 
     private void updateTotalPrice() {
         double total = cartItems.stream()
@@ -479,37 +494,26 @@ Customer extends User {
 
     }
 
+        public static boolean checkIfUserExists(String username, String email) {
+            // Replace with actual database logic
+            // Example:
+            String query = "SELECT COUNT(*) FROM customers WHERE username = ? OR email = ?";
 
-    // Helper method to create a product object based on category
-    private static Product createProduct(String category, String name, double price, String rating, String imageURL, String extraField) {
-        switch (category) {
-            case "Fruit":
-                Fruit fruit = new Fruit(name, price, rating, imageURL, extraField);
-                fruit.setSeason(extraField);
-                return fruit;
-            case "Vegetable":
-                Vegetable vegetable = new Vegetable(name, price, rating, imageURL, extraField);
-                vegetable.setIsOrganic(extraField);
-                return vegetable;
-            case "Beverages":
-                Beverages beverages = new Beverages(name, price, rating, imageURL, extraField);
-                beverages.setSize(extraField);
-                return beverages;
-            case "MilkAndEggs":
-                MilkAndEggs milkAndEggs = new MilkAndEggs(name, price, rating, imageURL, extraField);
-                milkAndEggs.setExpirationDate(extraField);
-                return milkAndEggs;
-            case "Laundry":
-                Laundry laundry = new Laundry(name, price, rating, imageURL, extraField);
-                laundry.setBrand(extraField);
-                return laundry;
-            default:
-                System.err.println("Unknown category: " + category);
-                return null;
+            try (Connection conn = DatabaseConnection.getConnection();
+                 PreparedStatement stmt = conn.prepareStatement(query)) {
+                stmt.setString(1, username);
+                stmt.setString(2, email);
+
+                ResultSet rs = stmt.executeQuery();
+                if (rs.next() && rs.getInt(1) > 0) {
+                    return true; // User already exists
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            return false; // No user found
         }
 
-
-
-    }
 
 }

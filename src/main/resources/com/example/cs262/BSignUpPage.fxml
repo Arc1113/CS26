@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -26,12 +27,12 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="usernameTXT" layoutX="18.0" layoutY="188.0" prefHeight="16.0" prefWidth="254.0" style="-fx-background-color: transparent; -fx-border-color: transparent transparent black transparent; fx-border-width: 0 0 2 0;">
+            <TextField fx:id="usernameTXT" layoutX="18.0" layoutY="188.0" prefHeight="16.0" prefWidth="254.0" style="-fx-background-color: transparent; -fx-border-color: transparent transparent black transparent; fx-border-width: 0 0 2 0;" promptText="e.g., john_doe123">
                <font>
                   <Font size="12.0" />
                </font>
             </TextField>
-            <Button fx:id="signupBTN" layoutX="33.0" layoutY="506.0" mnemonicParsing="false" onAction="#hadlesignupBTN" prefHeight="32.0" prefWidth="227.0" style="-fx-background-color: GREEN;" text="Sign Up" textFill="WHITE">
+            <Button fx:id="signupBTN" layoutX="33.0" layoutY="506.0" mnemonicParsing="false" onAction="#handleSignUpBTN" prefHeight="32.0" prefWidth="227.0" style="-fx-background-color: GREEN;" text="Sign Up" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -41,7 +42,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="EmailTXT" layoutX="20.0" layoutY="239.0" prefHeight="16.0" prefWidth="254.0" style="-fx-background-color: transparent; -fx-border-color: transparent transparent black transparent; fx-border-width: 0 0 2 0;">
+            <TextField fx:id="EmailTXT" layoutX="20.0" layoutY="239.0" prefHeight="16.0" prefWidth="254.0" style="-fx-background-color: transparent; -fx-border-color: transparent transparent black transparent; fx-border-width: 0 0 2 0;" promptText="e.g., example@email.com">
                <font>
                   <Font size="12.0" />
                </font>
@@ -51,12 +52,25 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="PasswordTXT" layoutX="23.0" layoutY="295.0" prefHeight="16.0" prefWidth="254.0" style="-fx-background-color: transparent; -fx-border-color: transparent transparent black transparent; fx-border-width: 0 0 2 0;">
+            <!-- PasswordField for password input -->
+            <PasswordField fx:id="PasswordTXT" layoutX="23.0" layoutY="295.0" prefHeight="16.0" prefWidth="254.0" style="-fx-background-color: transparent; -fx-border-color: transparent transparent black transparent; fx-border-width: 0 0 2 0;" promptText="At least 8 characters with letters &amp; numbers">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </PasswordField>
+            <!-- TextField for plain text password visibility -->
+            <TextField fx:id="passwordPlainTextField" layoutX="23.0" layoutY="295.0" prefHeight="16.0" prefWidth="254.0" style="-fx-background-color: transparent; -fx-border-color: transparent transparent black transparent; fx-border-width: 0 0 2 0;" visible="false">
                <font>
                   <Font size="12.0" />
                </font>
             </TextField>
-            <Button fx:id="loginBTN" layoutX="47.0" layoutY="546.0" mnemonicParsing="false" onAction="#goToLoginPage" prefHeight="15.0" prefWidth="201.0" style="-fx-background-color: transaprent; -fx-border-color: transparent;" text="Already have an accout? Login." textFill="#3c6f38">
+            <!-- Button to toggle password visibility -->
+            <Button fx:id="togglePasswordVisibility" layoutX="228.0" layoutY="291.0" mnemonicParsing="false" onAction="#togglePasswordVisibility" prefHeight="31.0" prefWidth="58.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="👁">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="loginBTN" layoutX="47.0" layoutY="546.0" mnemonicParsing="false" onAction="#goToLoginPage" prefHeight="15.0" prefWidth="201.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Already have an account? Login." textFill="#3c6f38">
                <font>
                   <Font size="12.0" />
                </font>
@@ -66,7 +80,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="AddressTXT" layoutX="20.0" layoutY="350.0" prefHeight="16.0" prefWidth="254.0" style="-fx-background-color: transparent; -fx-border-color: transparent transparent black transparent; fx-border-width: 0 0 2 0;">
+            <TextField fx:id="AddressTXT" layoutX="20.0" layoutY="350.0" prefHeight="16.0" prefWidth="254.0" style="-fx-background-color: transparent; -fx-border-color: transparent transparent black transparent; fx-border-width: 0 0 2 0;" promptText="e.g., 123 Main St, City">
                <font>
                   <Font size="12.0" />
                </font>
@@ -76,7 +90,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="ContactnumberTXT" layoutX="23.0" layoutY="406.0" prefHeight="16.0" prefWidth="254.0" style="-fx-background-color: transparent; -fx-border-color: transparent transparent black transparent; fx-border-width: 0 0 2 0;">
+            <TextField fx:id="ContactnumberTXT" layoutX="23.0" layoutY="406.0" prefHeight="16.0" prefWidth="254.0" style="-fx-background-color: transparent; -fx-border-color: transparent transparent black transparent; fx-border-width: 0 0 2 0;" promptText="e.g., 1234567890">
                <font>
                   <Font size="12.0" />
                </font>
